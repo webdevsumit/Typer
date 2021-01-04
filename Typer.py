@@ -105,7 +105,8 @@ class words:
     def __init__(self, surface, pos, y):
         self.surf = surface
         self.pos = pos
-        self.x = (randNum[self.pos]-62)*45
+        self.sWidth = screen.get_width()
+        self.x = (randNum[self.pos]-62)/30*self.sWidth
         self.y = y
         self.R = random.randint(190,225)
         self.B = random.randint(190,225)
@@ -175,12 +176,12 @@ def score_board():
     text_desc = font2.render('Speed up your typing skill' , True,  (0,0,0))
     surf.blit(text_desc,((x*0.3,y*0.3)))
     
-    text_score = font32.render('SCORE : '+str(score) , True,  (125,0,125))
-    surf.blit(text_score,((x*0.05,y*0.7)))
+    text_score = font32.render('SCORE : '+str(score) , True,  (125,225,125))
+    surf.blit(text_score,((x*0.1,y*0.55)))
     
-    pygame.draw.rect(surf, (225,225,225), (x*0.7,y*0.65,346,105))
+    pygame.draw.rect(surf, (225,225,225), (x*0.7,y*0.65,266,105))
     
-    text_start_button = font.render('Replay' , True,  (100,100,100), (25,225,225))
+    text_start_button = font.render('Retry' , True,  (100,100,100), (25,225,225))
     surf.blit(text_start_button,((x*0.7,y*0.65)))
     return surf
     
@@ -255,7 +256,7 @@ while startGame:
                 if((  x*0.7 <= mouse[0]  <=  x*0.7+346) and (  y*0.65 <= mouse[1]  <=  y*0.65+105)):
                     SHOWN_SCREEN = 'game_screen'
                     score = 0
-                pygame.draw.rect(screen, (125,125,125), (x*0.7,y*0.65,346,105))
+                pygame.draw.rect(screen, (125,125,125), (x*0.7,y*0.65,266,105))
         
         
     #fliping display
